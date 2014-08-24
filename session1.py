@@ -36,8 +36,6 @@ print exp3(5,3)
 print exp3(2,8)
 
 
-
-
 def exp4(a,n):
     if (n==0):
         return 1
@@ -46,7 +44,6 @@ def exp4(a,n):
         temp2=1
         for i in range (n/2):
             temp2= temp1*temp2
-        
         return temp2
     else:
         temp3=a*a
@@ -59,6 +56,24 @@ print exp4(2,0)
 print exp4(3,5)
 print exp4(2,7)
 print exp4(2,10)
+
+def exp5(a,n):
+    output = 1
+    temp=a
+    while(n!=0):
+        if (n%2==1):
+            output=output*temp
+        temp=temp*temp
+        n=n/2
+    return output
+
+print exp5(2,0)
+print exp5(5,3)
+print exp5(2,8)
+
+
+
+
 
 
 
