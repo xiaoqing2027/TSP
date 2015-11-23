@@ -8,7 +8,7 @@ public class GraphTextDeserializer {
 
     public UndirectedGraph load(String file) {
         int size = sc.nextInt();
-        UndirectedGraph g = new UndirectedGraph(size);
+        UndirectedGraph g = new UndirectedGraph_AdjMatrix(size);
         int edges = sc.nextInt();
         for(int i = 0; i< edges; i++) {
             int from = sc.nextInt();
