@@ -5,7 +5,7 @@ import Graph.UndirectedGraph;
 import java.util.*;
 
 public class TSPAlgorithm_BruteForce {
-    private static ArrayList<ArrayList<Integer>> computeRoutes(ArrayList<Integer> route, ArrayList<Integer> nums) {
+    private ArrayList<ArrayList<Integer>> computeRoutes(ArrayList<Integer> route, ArrayList<Integer> nums) {
         ArrayList<ArrayList<Integer>> result = new ArrayList<ArrayList<Integer>>();
         if(nums.size() == 0) {
             result.add(route);
@@ -23,25 +23,35 @@ public class TSPAlgorithm_BruteForce {
     }
 
     public double getShortRoute(UndirectedGraph g) {
-        double shortest = Double.MAX_VALUE;
-
-
-        return 0;
-    }
-
-    public static void main(String[] args) {
+        int size = g.getsize();
         ArrayList<Integer> array = new ArrayList<Integer>();
         ArrayList<Integer> nums = new ArrayList<Integer>();
-        nums.add(1);
-        nums.add(2);
-        nums.add(3);
-        nums.add(4);
-        nums.add(5);
-        nums.add(6);
-        nums.add(7);
-        nums.add(8);
-        System.out.println(computeRoutes(array, nums));
 
+        for(int i = 1; i<size; i++) {
+            nums.add(i);
+        }
+        ArrayList<ArrayList<Integer>> routes = computeRoutes(array, nums);
+        double min = Double.MAX_VALUE;
+        ArrayList<Integer> shortestRoute = new ArrayList<Integer>();
+
+        for(ArrayList<Integer> route : routes) {
+            double dist = cacluateRouteDistance(route, g);
+            if(dist < min)    {
+                shortestRoute = route;
+                min = dist;
+            }
+        }
+        return min;
+    }
+
+    private double cacluateRouteDistance(ArrayList<Integer> route, UndirectedGraph g) {
+        double total = 0.0;
+        total += g.getEdge(0, route.get(0));
+        for(int i = 0; i< route.size() -1; i++) {
+            double dis = g.getEdge(route.get(i), route.get(i+1));
+        }
+        total += g.getEdge(0, route.get(route.size() -1 ));
+        return total;
     }
 
 }

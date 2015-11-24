@@ -11,6 +11,8 @@ public class UndirectedGraph_AdjMatrix extends UndirectedGraph {
     double[][] matrix;
 
     public UndirectedGraph_AdjMatrix(int size) {
+        this.size = size;
+
         matrix = new double[size][size];
         // vertices in the graph are numbered 0, 1, 2 ... n-1 as their identifier.
         for (int i = 0; i < size; i++) {
@@ -27,5 +29,10 @@ public class UndirectedGraph_AdjMatrix extends UndirectedGraph {
     public void addEdge(int from, int to, double distance) {
         matrix[from][to] = distance;
         matrix[to][from] = distance;
+    }
+
+    @Override
+    public double getEdge(int from, int to) {
+        return matrix[from][to];
     }
 }

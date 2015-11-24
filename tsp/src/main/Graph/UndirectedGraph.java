@@ -4,6 +4,11 @@ import java.util.*;
 
 
 public abstract class UndirectedGraph {
-    int size;
+    protected int size;
+    public int getsize() {
+        return size;
+    }
     public abstract void addEdge(int from, int to, double distance);
+    public abstract double getEdge(int from, int to);
+
 }

@@ -21,6 +21,8 @@ public class UndirectedGraph_AdjList extends UndirectedGraph {
     List<UndirectedGraphVertex> vertices;
 
     public UndirectedGraph_AdjList(int size) {
+        this.size = size;
+
         vertices = new ArrayList<UndirectedGraphVertex>(size);
         // vertices in the graph are numbered 0, 1, 2 ... n-1 as their identifier.
         for(int i = 0; i < size; i++) {
@@ -32,5 +34,10 @@ public class UndirectedGraph_AdjList extends UndirectedGraph {
     public void addEdge(int from, int to, double distance) {
         vertices.get(from).SetNeighbor(vertices.get(to), distance);
         vertices.get(to).SetNeighbor(vertices.get(from), distance);
+    }
+
+    @Override
+    public double getEdge(int from, int to) {
+        return 0;
     }
 }
