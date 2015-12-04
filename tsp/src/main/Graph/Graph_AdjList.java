@@ -8,8 +8,9 @@ import java.util.TreeMap;
 
 public class Graph_AdjList extends Graph {
     List<GraphVertex> vertices;
+    boolean isDirected = false;
 
-    
+
     class GraphVertex {
         int id;
         Map<Graph_AdjList.GraphVertex, Double> neighbors = new TreeMap<Graph_AdjList.GraphVertex, Double>();
@@ -22,8 +23,9 @@ public class Graph_AdjList extends Graph {
     }
 
 
-    public Graph_AdjList(int size) {
+    public Graph_AdjList(boolean isDirected, int size) {
         this.size = size;
+        this.isDirected = isDirected;
 
         vertices = new ArrayList<Graph_AdjList.GraphVertex>(size);
         // vertices in the graph are numbered 0, 1, 2 ... n-1 as their identifier.
@@ -35,11 +37,14 @@ public class Graph_AdjList extends Graph {
     @Override
     public void addEdge(int from, int to, double distance) {
         vertices.get(from).SetNeighbor(vertices.get(to), distance);
+        if(!isDirected) {
+            vertices.get(to).SetNeighbor(vertices.get(from), distance);
+        }
     }
 
     @Override
     public double getEdge(int from, int to) {
-        return 0;
+        return vertices.get(from).neighbors.get(to);
     }
 
     @Override

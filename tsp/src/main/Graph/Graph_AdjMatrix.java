@@ -1,15 +1,14 @@
 package Graph;
 
-/**
- * Created by donghan on 11/23/15.
- */
 
 public class Graph_AdjMatrix extends Graph {
 
     double[][] matrix;
+    boolean isDirected = false;
 
-    public Graph_AdjMatrix(int size) {
+    public Graph_AdjMatrix(boolean isDirected, int size) {
         this.size = size;
+        this.isDirected = isDirected;
 
         matrix = new double[size][size];
         // vertices in the graph are numbered 0, 1, 2 ... n-1 as their identifier.
@@ -25,7 +24,11 @@ public class Graph_AdjMatrix extends Graph {
 
     @Override
     public void addEdge(int from, int to, double distance) {
+
         matrix[from][to] = distance;
+        if(!isDirected) {
+            matrix[to][from] = distance;
+        }
     }
 
     @Override
