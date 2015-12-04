@@ -14,10 +14,13 @@ directed = args.directed
 
 n = args.n
 
-print n
 if directed:
+    print 'true'
+    print n
     print n * (n-1)
 else:
+    print 'false'
+    print n
     print n * (n-1) /2
 
 for i in range(0, n):
