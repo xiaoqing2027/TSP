@@ -36,13 +36,6 @@ public class TSP_DP {
     }
 
     public Double[][] computeRoutes(Graph g) {
-        for (int i = 0; i < numberOfVertices; i++) {
-            for (int j = 0; j < numberOfVertices; j++) {
-                //System.out.print(" " +g.getEdge(i, j));
-
-            }
-            //System.out.println(" " );
-        }
 
         //filing value first column
         System.out.println("first column: (and number of column " + column);
@@ -71,8 +64,9 @@ public class TSP_DP {
                 }
             }
         }
-        double min = Double.MAX_VALUE;
+        
         // calculating last column, actually only minCurrentStage[0][column -1]
+        double min = Double.MAX_VALUE;  
         for (int k = 1; k < numberOfVertices; k++) {
 
             double temp;
