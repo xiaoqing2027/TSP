@@ -1,17 +1,17 @@
 package Algorithms;
 
-import Graph.UndirectedGraph;
+import Graph.Graph;
 
 import java.util.*;
 
 public class TSPAlgorithm_BruteForce {
     int startPoint = 0;
     ArrayList<Integer> travelingVertices;
-    UndirectedGraph g;
+    Graph g;
 
     // Constructor
     // Set graph and startPoint of route
-    public TSPAlgorithm_BruteForce(UndirectedGraph g, int startPoint) {
+    public TSPAlgorithm_BruteForce(Graph g, int startPoint) {
         this.g = g;
         this.startPoint = startPoint;
         travelingVertices = new ArrayList<Integer>();

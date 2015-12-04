@@ -1,16 +1,14 @@
 package Graph;
 
-import java.util.ArrayList;
-
 /**
  * Created by donghan on 11/23/15.
  */
 
-public class UndirectedGraph_AdjMatrix extends UndirectedGraph {
+public class Graph_AdjMatrix extends Graph {
 
     double[][] matrix;
 
-    public UndirectedGraph_AdjMatrix(int size) {
+    public Graph_AdjMatrix(int size) {
         this.size = size;
 
         matrix = new double[size][size];
@@ -28,11 +26,15 @@ public class UndirectedGraph_AdjMatrix extends UndirectedGraph {
     @Override
     public void addEdge(int from, int to, double distance) {
         matrix[from][to] = distance;
-        matrix[to][from] = distance;
     }
 
     @Override
     public double getEdge(int from, int to) {
         return matrix[from][to];
+    }
+
+    @Override
+    public boolean hasEdge(int from, int to) {
+        return matrix[from][to] > 0;
     }
 }

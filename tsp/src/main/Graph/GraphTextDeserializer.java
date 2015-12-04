@@ -1,15 +1,15 @@
 package Graph;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class GraphTextDeserializer {
 
-    Scanner sc;
-
-    public UndirectedGraph load(String file) {
-        sc = new Scanner(new File(file));
+    public Graph load(String file) throws FileNotFoundException {
+        Scanner sc = new Scanner(new File(file));
         int size = sc.nextInt();
-        UndirectedGraph g = new UndirectedGraph_AdjMatrix(size);
+        Graph g = new Graph_AdjMatrix(size);
         int edges = sc.nextInt();
         for(int i = 0; i< edges; i++) {
             int from = sc.nextInt();

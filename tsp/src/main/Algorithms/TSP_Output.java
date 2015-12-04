@@ -5,6 +5,8 @@
  */
 package Algorithms;
 
+import Graph.*;
+
 import java.io.FileNotFoundException;
 import static java.lang.System.out;
 import java.util.Arrays;
@@ -13,11 +15,10 @@ import java.util.Arrays;
 public class TSP_Output {
 
     public static void main(String[] args) throws FileNotFoundException {
-        Graph g;
 
-        DirectedGraphTextDeserializer gReader = new DirectedGraphTextDeserializer();
+        GraphTextDeserializer gReader = new GraphTextDeserializer();
 
-        g = gReader.load("./data/6.txt");
+        Graph g = gReader.load("./data/6.txt");
 
         TSP_DP tsp_dp = new TSP_DP(g);
         tsp_dp.computeRoutes(g);
