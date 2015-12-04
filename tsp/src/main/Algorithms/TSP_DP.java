@@ -20,12 +20,12 @@ public class TSP_DP {
     Double[][] minCurrentStage;
     Integer[][] pickedVertex;
     ArrayList<Double>[][] g_matrix;
-    UndirectedGraph g;
+    Graph g;
     
     
-    public TSP_DP(UndirectedGraph g) {
+    public TSP_DP(Graph g) {
         numberOfVertices = g.getsize();
-        column =(int)pow(2,numberOfVertices);
+        column =(int)pow(2,(numberOfVertices-1));
 
 
         minCurrentStage = new Double[numberOfVertices][column];
@@ -33,23 +33,30 @@ public class TSP_DP {
         
         for(int i = 0; i < column; i++){
             for(int j=0; j < numberOfVertices; j++){
-                minCurrentStage[j][i]= -1.0;
-                pickedVertex[j][i]= -1;   
+                minCurrentStage[j][i]= 0.0;
+                pickedVertex[j][i]= 0;   
             }
         }
 
     }
     
-    public Double[][] computeRoutes( UndirectedGraph g) 
-     {
+    public Double[][] computeRoutes( Graph g){             
+        for(int i = 0; i < numberOfVertices; i++){
+            for(int j = 0; j < numberOfVertices; j++){
+                //System.out.print(" " +g.getEdge(i, j));
+                
+            }
+            //System.out.println(" " );
+        }
               
         //filing value first column
+        System.out.println("first column: (and number of column " +column );
         for(int j = 0; j < numberOfVertices; j++){
              minCurrentStage[j][0]=g.getEdge(j, 0);
         }
         
         // filing value for other cells, except last column and the first row
-        for(int i = 1; i < column; i++){
+        for(int i = 1; i < column-1; i++){
             
             for(int j = 1; j < numberOfVertices; j++){
                 
@@ -58,7 +65,7 @@ public class TSP_DP {
                     double temp;
                     for(int k = 1; k < numberOfVertices; k++){
                         if(((int)pow(2,k-1) & i) !=0){
-                            temp = g.getEdge(j, 0) + minCurrentStage[k][i - (int)pow(2,k-1)];
+                            temp = g.getEdge(j, k) + minCurrentStage[k][i - (int)pow(2,k-1)];
                             if(temp < min){
                                 min = temp;
                                 minCurrentStage[j][i] = min;
@@ -69,20 +76,37 @@ public class TSP_DP {
                 }
             }   
         }
-        
+        double min = Double.MAX_VALUE;
         // calculating last column, actually only minCurrentStage[0][column -1]
         for(int k = 1; k < numberOfVertices; k++){
-            double min = Double.MAX_VALUE;
+            
             double temp;
-             temp = g.getEdge(0,k) + minCurrentStage[k][column -1 - (int)pow(2,k-1)];
+             temp = g.getEdge(0,k) + minCurrentStage[k][column -1-(int)pow(2,k-1)];
+           
                             if(temp < min){
                                 min = temp;
                                 minCurrentStage[0][column -1 ] = min;
                                 pickedVertex[0][column -1 ] = k;
                             }
         }
-        System.out.println("Shortest path:"+minCurrentStage[0][column -1 ]);
         
+        
+        
+        
+            int j= 0;
+            System.out.print(1+ "->"); 
+            for(int i = column-1; i >0;){
+                j = pickedVertex[j][i];
+                i = i - (int)pow(2,j-1);               
+                
+                System.out.print(j+1+ "->");           
+            }
+            System.out.print(1); 
+            
+        
+        System.out.println(" " );
+        System.out.println("Shortest path:"+minCurrentStage[0][column-1]);
+       
         return minCurrentStage;
     }
     

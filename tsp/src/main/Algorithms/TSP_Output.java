@@ -15,14 +15,15 @@ import java.util.Arrays;
  */
 public class TSP_Output {
     public static void main(String[] args) throws FileNotFoundException{
-        UndirectedGraph g;
+        Graph g;
         
-        GraphTextDeserializer gReader = new GraphTextDeserializer();
+        DirectedGraphTextDeserializer gReader = new DirectedGraphTextDeserializer();
 
-        g = gReader.load("./data/5.txt");
+        g = gReader.load("./data/6.txt");
 
         TSP_DP tsp_dp = new TSP_DP(g);
-        System.out.println(" "+ Arrays.toString(tsp_dp.computeRoutes(g)));
+        tsp_dp.computeRoutes(g);
+        //System.out.println(" "+ Arrays.toString(tsp_dp.computeRoutes(g)));
 //        TSPAlgorithm_BruteForce tsp_bf = new TSPAlgorithm_BruteForce(g,0);
 
 //        System.out.println(" "+ tsp_bf.solve());
