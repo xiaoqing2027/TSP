@@ -10,14 +10,16 @@ parser.set_defaults(directed=True)
 
 args = parser.parse_args()
 
-
-
 directed = args.directed
 
 n = args.n
 
 print n
-print n * (n-1) / 2
+if directed:
+    print n * (n-1)
+else:
+    print n * (n-1) /2
+
 for i in range(0, n):
     for j in range(i+1, n):
         print i, j, random.uniform(1, 50)
