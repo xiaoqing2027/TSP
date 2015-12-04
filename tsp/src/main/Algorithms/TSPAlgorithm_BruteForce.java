@@ -65,6 +65,7 @@ public class TSPAlgorithm_BruteForce {
         total += g.getEdge(startPoint, route.get(0));
         for (int i = 0; i < route.size() - 1; i++) {
             double dis = g.getEdge(route.get(i), route.get(i + 1));
+            total += dis;
         }
         total += g.getEdge(startPoint, route.get(route.size() - 1));
         return total;
