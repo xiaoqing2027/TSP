@@ -9,6 +9,8 @@ public class TSPAlgorithm_BruteForce {
     ArrayList<Integer> travelingVertices;
     UndirectedGraph g;
 
+    // Constructor
+    // Set graph and startPoint of route
     public TSPAlgorithm_BruteForce(UndirectedGraph g, int startPoint) {
         this.g = g;
         this.startPoint = startPoint;
@@ -19,6 +21,10 @@ public class TSPAlgorithm_BruteForce {
         }
     }
 
+    // This is to generate all permutations of a given list of vertices.
+    // nums: a list of remaining vertices.
+    // route: intermediate routes generated using vertices that have been pulled from 'nums'
+    // return value is all permutations of routes.
     private ArrayList<ArrayList<Integer>> computeRoutes(ArrayList<Integer> route, ArrayList<Integer> nums) {
         ArrayList<ArrayList<Integer>> result = new ArrayList<ArrayList<Integer>>();
         if (nums.size() == 0) {
@@ -35,6 +41,7 @@ public class TSPAlgorithm_BruteForce {
         return result;
     }
 
+    // solve
     public double solve() {
         ArrayList<Integer> array = new ArrayList<Integer>();
 
@@ -52,6 +59,7 @@ public class TSPAlgorithm_BruteForce {
         return min;
     }
 
+    // helper function to determine a distance to a route.
     private double cacluateRouteDistance(ArrayList<Integer> route) {
         double total = 0.0;
         total += g.getEdge(startPoint, route.get(0));
