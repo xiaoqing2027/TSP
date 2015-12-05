@@ -20,6 +20,7 @@ public class TSP_DP {
     Graph g;
 
     public TSP_DP(Graph g) {
+        this.g  = g;
         numberOfVertices = g.getsize();
         column = (int) Math.pow(2, (numberOfVertices - 1));
 
@@ -35,7 +36,11 @@ public class TSP_DP {
 
     }
 
-    public Double[][] computeRoutes(Graph g) {
+    public double solve() {
+        Double[][] result = computeRoutes();
+        return result[0][column-1];
+    }
+    public Double[][] computeRoutes() {
 
         //filing value first column
         System.out.println("first column: (and number of column " + column);

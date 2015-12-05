@@ -3,11 +3,13 @@ package Algorithms;
 import Graph.*;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class TSP_BruteForce {
+    Graph g;
     int startPoint = 0;
     ArrayList<Integer> travelingVertices;
-    Graph g;
+    ArrayList<Integer> shortestRoute;
 
     // Constructor
     // Set graph and startPoint of route
@@ -20,6 +22,9 @@ public class TSP_BruteForce {
                 travelingVertices.add(i);
             }
         }
+    }
+    public TSP_BruteForce(Graph g) {
+        this(g,0);
     }
 
     // This is to generate all permutations of a given list of vertices.
@@ -51,20 +56,29 @@ public class TSP_BruteForce {
     }
 
     // solve
-    public double solve() {
+    public double solve() throws NotSolvableException {
         ArrayList<Integer> array = new ArrayList<Integer>();
         ArrayList<ArrayList<Integer>> routes = computeRoutes(array, travelingVertices);
+        if(routes.size() == 0) {
+            throw new NotSolvableException("No solution.");
+        }
         double min = Double.MAX_VALUE;
-        ArrayList<Integer> shortestRoute = new ArrayList<Integer>();
 
         for (ArrayList<Integer> route : routes) {
             double dist = cacluateRouteDistance(route);
             if (dist < min) {
                 shortestRoute = route;
+                shortestRoute.add(0, startPoint);
+                shortestRoute.add(startPoint);
+
                 min = dist;
             }
         }
         return min;
+    }
+
+    public String getShortestRoute(){
+        return shortestRoute.toString();
     }
 
     // helper function to determine a distance to a route.

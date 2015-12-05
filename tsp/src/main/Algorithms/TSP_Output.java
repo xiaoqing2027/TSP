@@ -15,14 +15,14 @@ import java.util.Arrays;
 public class TSP_Output {
 
     public static void main(String[] args) throws FileNotFoundException {
-
+/*
         GraphTextDeserializer gReader = new GraphTextDeserializer();
 
         Graph g = gReader.load("./data/6.txt");
 
         TSP_DP tsp_dp = new TSP_DP(g);
         tsp_dp.computeRoutes(g);
-
+*/
 //        TSP_BruteForce tsp_bf = new TSP_BruteForce(g,0);
 //        System.out.println(" "+ tsp_bf.solve());
     }
