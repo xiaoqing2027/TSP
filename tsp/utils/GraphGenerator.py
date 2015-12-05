@@ -28,10 +28,10 @@ edges = []
 for i in range(0, n):
     for j in range(i+1, n):
         if random.random() < coverage:
-            edges.add(" ".join(i, j, random.uniform(1, 100)))
+            edges.append(" ".join((str(i), str(j), str(random.uniform(1, 100)))))
             e+=1
         if directed and random.random() < coverage:
-            edges.add(" ".join(j, i, random.uniform(1, 100)))
+            edges.append(" ".join((str(j), str(i), str(random.uniform(1, 100)))))
             e+=1
 
 print e
