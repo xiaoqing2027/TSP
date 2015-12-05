@@ -7,18 +7,21 @@ package Algorithms;
 
 import java.util.ArrayList;
 import java.lang.Math;
+import java.util.List;
+
 import Graph.*;
 import com.sun.tools.corba.se.idl.constExpr.Not;
 
 public class TSP_DP {
-
+    Graph g;
     int numberOfVertices;
     int column;
 
     Double[][] minCurrentStage;
     Integer[][] pickedVertex;
     ArrayList<Double>[][] g_matrix;
-    Graph g;
+    List<Integer> shortestPath = new ArrayList<Integer>();
+
 
     public TSP_DP(Graph g) {
         this.g  = g;
@@ -38,13 +41,13 @@ public class TSP_DP {
     }
 
     public double solve() throws NotSolvableException {
+        System.out.println("number of column " + column);
         Double[][] result = computeRoutes();
         return result[0][column-1];
     }
     public Double[][] computeRoutes() throws NotSolvableException{
 
         //filing value first column
-        System.out.println("first column: (and number of column " + column);
         for (int j = 0; j < numberOfVertices; j++) {
             minCurrentStage[j][0] = g.getEdge(j, 0);
         }
@@ -62,10 +65,7 @@ public class TSP_DP {
                         continue;
                     }
 
-                    if(!g.hasEdge(j,k)) {
-                        continue;
-                    }
-                    else {
+                    if(g.hasEdge(j,k)) {
                         int w = i - (int) Math.pow(2, k - 1);
                         if (minCurrentStage[k][w] == -1.0) {
                             throw new NotSolvableException("No solution");
@@ -86,10 +86,8 @@ public class TSP_DP {
         // calculating last column, actually only minCurrentStage[0][column -1]
         double min = Double.MAX_VALUE;
         for (int k = 1; k < numberOfVertices; k++) {
-            if(!g.hasEdge(0,k)) {
-                continue;
-            }
-            else {
+            if(g.hasEdge(0,k)) {
+
                 double temp = g.getEdge(0, k) + minCurrentStage[k][column - 1 - (int) Math.pow(2, k - 1)];
 
                 if (temp < min) {
@@ -100,22 +98,26 @@ public class TSP_DP {
             }
         }
 
+        shortestPath.add(0);
         int j = 0;
-        System.out.print(1 + "->");
         for (int i = column - 1; i > 0; ) {
             j = pickedVertex[j][i];
             i = i - (int) Math.pow(2, j - 1);
 
-            System.out.print(j + 1 + "->");
+            shortestPath.add(j);
         }
+        shortestPath.add(0);
 
-        System.out.println(1);
         if(minCurrentStage[0][column - 1] == -1.0) {
             throw new NotSolvableException("No solution.");
         }
         System.out.println("Shortest path:" + minCurrentStage[0][column - 1]);
 
         return minCurrentStage;
+    }
+
+    public String getShortestPath() {
+        return shortestPath.toString();
     }
 
 }

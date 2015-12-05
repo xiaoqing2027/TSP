@@ -22,6 +22,8 @@ public class TSP_DPTest {
         double result = test.solve();
 
         assertTrue(result == 9.0);
+        assertTrue(test.getShortestPath().equals("[0, 1, 2, 0]"));
+
     }
 
     @Test(expected = NotSolvableException.class)
@@ -33,6 +35,7 @@ public class TSP_DPTest {
         TSP_DP test = new TSP_DP(g);
         System.out.println(test.solve());
 
-
     }
+
+    
 }

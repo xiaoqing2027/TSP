@@ -22,7 +22,6 @@ public class TSP_BruteForceTest {
         double result = test.solve();
         String route = test.getShortestRoute();
         assertTrue(result == 9.0);
-        System.out.println(route);
         assertTrue(route.equals("[0, 1, 2, 0]"));
 
     }
