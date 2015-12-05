@@ -23,7 +23,7 @@ public class TSP_Output {
         TSP_DP tsp_dp = new TSP_DP(g);
         tsp_dp.computeRoutes(g);
 
-//        TSPAlgorithm_BruteForce tsp_bf = new TSPAlgorithm_BruteForce(g,0);
+//        TSP_BruteForce tsp_bf = new TSP_BruteForce(g,0);
 //        System.out.println(" "+ tsp_bf.solve());
     }
 }

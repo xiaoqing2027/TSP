@@ -1,23 +1,24 @@
 package Algorithms;
 
-import Graph.Graph;
+import Graph.*;
 
 import java.util.*;
 
-public class TSPAlgorithm_BruteForce {
+public class TSP_BruteForce {
     int startPoint = 0;
     ArrayList<Integer> travelingVertices;
     Graph g;
 
     // Constructor
     // Set graph and startPoint of route
-    public TSPAlgorithm_BruteForce(Graph g, int startPoint) {
+    public TSP_BruteForce(Graph g, int startPoint) {
         this.g = g;
         this.startPoint = startPoint;
         travelingVertices = new ArrayList<Integer>();
         for (int i = 0; i < g.getsize(); i++) {
-            if (i != startPoint)
+            if (i != startPoint) {
                 travelingVertices.add(i);
+            }
         }
     }
 
@@ -31,11 +32,14 @@ public class TSPAlgorithm_BruteForce {
             result.add(route);
         } else {
             for (Integer num : nums) {
-                ArrayList<Integer> r = (ArrayList<Integer>) route.clone();
-                ArrayList<Integer> n = (ArrayList<Integer>) nums.clone();
-                n.remove(num);
-                r.add(num);
-                result.addAll(computeRoutes(r, n));
+                int pre = route.size() == 0 ? startPoint : route.get(route.size() - 1);
+                if (g.hasEdge(pre, num)) {
+                    ArrayList<Integer> r = (ArrayList<Integer>) route.clone();
+                    ArrayList<Integer> n = (ArrayList<Integer>) nums.clone();
+                    n.remove(num);
+                    r.add(num);
+                    result.addAll(computeRoutes(r, n));
+                }
             }
         }
         return result;
@@ -44,7 +48,6 @@ public class TSPAlgorithm_BruteForce {
     // solve
     public double solve() {
         ArrayList<Integer> array = new ArrayList<Integer>();
-
         ArrayList<ArrayList<Integer>> routes = computeRoutes(array, travelingVertices);
         double min = Double.MAX_VALUE;
         ArrayList<Integer> shortestRoute = new ArrayList<Integer>();

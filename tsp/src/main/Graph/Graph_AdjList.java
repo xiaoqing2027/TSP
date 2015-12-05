@@ -10,7 +10,6 @@ public class Graph_AdjList extends Graph {
     List<GraphVertex> vertices;
     boolean isDirected = false;
 
-
     class GraphVertex {
         int id;
         Map<Graph_AdjList.GraphVertex, Double> neighbors = new TreeMap<Graph_AdjList.GraphVertex, Double>();
@@ -21,7 +20,6 @@ public class Graph_AdjList extends Graph {
             neighbors.put(neighbor, distance);
         }
     }
-
 
     public Graph_AdjList(boolean isDirected, int size) {
         this.size = size;
