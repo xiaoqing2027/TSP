@@ -32,6 +32,11 @@ public class TSP_BruteForce {
             result.add(route);
         } else {
             for (Integer num : nums) {
+                if(nums.size() == 1) {
+                    if(!g.hasEdge(num, startPoint)) {
+                        continue;
+                    }
+                }
                 int pre = route.size() == 0 ? startPoint : route.get(route.size() - 1);
                 if (g.hasEdge(pre, num)) {
                     ArrayList<Integer> r = (ArrayList<Integer>) route.clone();
