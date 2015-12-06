@@ -33,7 +33,7 @@ public class TSP_DP {
 
         for (int i = 0; i < column; i++) {
             for (int j = 0; j < numberOfVertices; j++) {
-                minCurrentStage[j][i] = 0.0;
+                minCurrentStage[j][i] = -1.0;
                 pickedVertex[j][i] = 0;
             }
         }
@@ -66,8 +66,9 @@ public class TSP_DP {
 
                     if(g.hasEdge(j,k)) {
                         int w = i - (int) Math.pow(2, k - 1);
-                        if (minCurrentStage[k][w] == -1.0) {
-                            throw new NotSolvableException("No solution");
+                        if (minCurrentStage[k][w] < 0) {
+                            //throw new NotSolvableException("No solution");
+                            continue;
                         }
                         temp = g.getEdge(j, k) + minCurrentStage[k][ w];
                         if (temp < min) {
@@ -107,11 +108,11 @@ public class TSP_DP {
         }
         shortestPath.add(0);
 
-        if(minCurrentStage[0][column - 1] == -1.0) {
+        if(minCurrentStage[0][column - 1] < 0) {
             throw new NotSolvableException("No solution.");
         }
 
-        System.out.println("distance: " + minCurrentStage);
+        System.out.println("distance: " + minCurrentStage[0][column - 1]);
         System.out.println("route: " + getShortestRoute());
         return minCurrentStage;
     }
