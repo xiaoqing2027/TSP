@@ -74,10 +74,10 @@ public class TSP_DPTest {
         TSP_DP test = new TSP_DP(g);
         double result= test.solve();
         String route= test.getShortestRoute();
-        System.out.println("result: "+result);
-        System.out.println("route: "+route);
-//        assertEquals(result, 187.99106516778, diff_delta);
-//        assertTrue(route.equals("[0, 5, 3, 8, 7, 1, 2, 6, 4, 10, 9, 0]"));
+//        System.out.println("result: "+result);
+//        System.out.println("route: "+route);
+        assertEquals(result, 190.42906319352, diff_delta);
+        assertTrue(route.equals("[0, 21, 18, 19, 9, 2, 10, 6, 4, 13, 7, 14, 17, 5, 8, 15, 11, 12, 20, 1, 3, 16, 0]"));
 
     }
 
