@@ -65,15 +65,17 @@ public class TSP_BruteForce {
         double min = Double.MAX_VALUE;
 
         for (ArrayList<Integer> route : routes) {
-            double dist = cacluateRouteDistance(route);
+            double dist = calculateRouteDistance(route);
             if (dist < min) {
                 shortestRoute = route;
                 shortestRoute.add(0, startPoint);
                 shortestRoute.add(startPoint);
-
                 min = dist;
             }
         }
+        System.out.println("distance: " + min);
+        System.out.println("route: " + getShortestRoute());
+
         return min;
     }
 
@@ -81,15 +83,16 @@ public class TSP_BruteForce {
         return shortestRoute.toString();
     }
 
+
     // helper function to determine a distance to a route.
-    private double cacluateRouteDistance(ArrayList<Integer> route) {
+    private double calculateRouteDistance(ArrayList<Integer> route) {
         double total = 0.0;
         total += g.getEdge(startPoint, route.get(0));
         for (int i = 0; i < route.size() - 1; i++) {
             double dis = g.getEdge(route.get(i), route.get(i + 1));
             total += dis;
         }
-        total += g.getEdge(startPoint, route.get(route.size() - 1));
+        total += g.getEdge(route.get(route.size() - 1),startPoint);
         return total;
     }
 

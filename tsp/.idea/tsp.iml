@@ -10,7 +10,25 @@
       <sourceFolder url="file://$MODULE_DIR$/src/test" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/graphs" type="java-resource" />
     </content>
-    <orderEntry type="jdk" jdkName="1.8 (1)" jdkType="JavaSDK" />
+    <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module-library" scope="PROVIDED">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/junit-4.7.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="" scope="PROVIDED">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/log4j-1.2.9.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
   </component>
 </module>

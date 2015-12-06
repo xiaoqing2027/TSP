@@ -41,7 +41,6 @@ public class TSP_DP {
     }
 
     public double solve() throws NotSolvableException {
-        System.out.println("number of column " + column);
         Double[][] result = computeRoutes();
         return result[0][column-1];
     }
@@ -111,12 +110,13 @@ public class TSP_DP {
         if(minCurrentStage[0][column - 1] == -1.0) {
             throw new NotSolvableException("No solution.");
         }
-        System.out.println("Shortest path:" + minCurrentStage[0][column - 1]);
 
+        System.out.println("distance: " + minCurrentStage);
+        System.out.println("route: " + getShortestRoute());
         return minCurrentStage;
     }
 
-    public String getShortestPath() {
+    public String getShortestRoute() {
         return shortestPath.toString();
     }
 
