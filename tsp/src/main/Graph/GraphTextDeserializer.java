@@ -16,6 +16,7 @@ public class GraphTextDeserializer {
             int from = sc.nextInt();
             int to = sc.nextInt();
             double distance = sc.nextDouble();
+            //check if graph is directed or not
             g.addEdge(from, to, distance);
         }
         sc.close();

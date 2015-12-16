@@ -42,6 +42,7 @@ public class TSP_BruteForce {
                         continue;
                     }
                 }
+                //check if there has an edge or not
                 int pre = route.size() == 0 ? startPoint : route.get(route.size() - 1);
                 if (g.hasEdge(pre, num)) {
                     ArrayList<Integer> r = (ArrayList<Integer>) route.clone();
@@ -62,8 +63,8 @@ public class TSP_BruteForce {
         if(routes.size() == 0) {
             throw new NotSolvableException("No solution.");
         }
-        double min = Double.MAX_VALUE;
 
+        double min = Double.MAX_VALUE;
         for (ArrayList<Integer> route : routes) {
             double dist = calculateRouteDistance(route);
             if (dist < min) {
@@ -73,8 +74,8 @@ public class TSP_BruteForce {
                 min = dist;
             }
         }
-        System.out.println("distance: " + min);
-        System.out.println("route: " + getShortestRoute());
+        System.out.println("distance_BF: " + min);
+        System.out.println("route_BF: " + getShortestRoute());
 
         return min;
     }

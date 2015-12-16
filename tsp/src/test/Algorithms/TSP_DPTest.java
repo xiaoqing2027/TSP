@@ -37,9 +37,9 @@ public class TSP_DPTest {
 //
 //        assertTrue(result == 9.0);
 //        assertTrue(test.getShortestRoute().equals("[0, 1, 2, 0]"));
-//
+
 //    }
-//
+
 //    @Test
 //    public void TSP_DP_V4_E12_Directed_Test() throws NotSolvableException, FileNotFoundException {
 //        Graph g;
@@ -53,19 +53,7 @@ public class TSP_DPTest {
 //
 //    }
 //
-//    @Test
-//    public void TSP_DP_V5_E20_Directed_Test() throws NotSolvableException, FileNotFoundException {
-//        Graph g;
-//        GraphTextDeserializer gReader = new GraphTextDeserializer();
-//        g = gReader.load("./completeGraph/directedGraph/5_d.txt");
-//        TSP_DP test = new TSP_DP(g);
-//        double result = test.solve();
-//        String route = test.getShortestRoute();
-//        assertEquals(result, 181.64410365060002, diff_delta);
-//        assertTrue(route.equals("[0, 3, 2, 1, 4, 0]"));
-//
-//    }
-//
+
 //    @Test
 //    public void TSP_DP_V6_E30_Directed_Test() throws NotSolvableException, FileNotFoundException {
 //        Graph g;
@@ -78,20 +66,20 @@ public class TSP_DPTest {
 //        assertTrue(route.equals("[0, 1, 5, 4, 3, 2, 0]"));
 //
 //    }
-//
-//    @Test
-//    public void TSP_DP_V7_E42_Directed_Test() throws NotSolvableException, FileNotFoundException {
-//        Graph g;
-//        GraphTextDeserializer gReader = new GraphTextDeserializer();
-//        g = gReader.load("./completeGraph/directedGraph/7_d.txt");
-//        TSP_DP test = new TSP_DP(g);
-//        double result = test.solve();
-//        String route = test.getShortestRoute();
-//        assertEquals(result, 148.23749344215, diff_delta);
-//        assertTrue(route.equals("[0, 5, 3, 1, 4, 2, 6, 0]"));
-//
-//    }
-//
+
+    @Test
+    public void TSP_DP_V7_E42_Directed_Test() throws NotSolvableException, FileNotFoundException {
+        Graph g;
+        GraphTextDeserializer gReader = new GraphTextDeserializer();
+        g = gReader.load("./completeGraph/directedGraph/7_d.txt");
+        TSP_DP test = new TSP_DP(g);
+        double result = test.solve();
+        String route = test.getShortestRoute();
+        assertEquals(result, 148.23749344215, diff_delta);
+        assertTrue(route.equals("[0, 5, 3, 1, 4, 2, 6, 0]"));
+
+    }
+
 //    @Test
 //    public void TSP_DP_V8_E56_Directed_Test() throws NotSolvableException, FileNotFoundException {
 //        Graph g;
@@ -288,21 +276,21 @@ public class TSP_DPTest {
 //
 //    }
 
-    // cannot stand 23 vertices, running 23 vertices takes too long and too much RAM
+//    cannot stand 23 vertices, running 23 vertices takes too long and too much RAM
+//
+//    -----------------------directed incomplete graph test ------------------------------
 
-    //-----------------------directed incomplete graph test ------------------------------
-
-    @Test
-    public void TSP_DP_V8_E41_Directed_Test() throws NotSolvableException, FileNotFoundException {
-        Graph g;
-
-        GraphTextDeserializer gReader = new GraphTextDeserializer();
-        g = gReader.load("./incompleteGraph/8_d.txt");
-        TSP_DP test = new TSP_DP(g);
-        double result = test.solve();
-        String route = test.getShortestRoute();
-        assertEquals(result, 124.78312518185999, diff_delta);
-        assertTrue(route.equals("[0, 7, 1, 3, 4, 2, 6, 5, 0]"));
-
-    }
+//    @Test
+//    public void TSP_DP_V8_E41_Directed_Test() throws NotSolvableException, FileNotFoundException {
+//        Graph g;
+//
+//        GraphTextDeserializer gReader = new GraphTextDeserializer();
+//        g = gReader.load("./incompleteGraph/8_d.txt");
+//        TSP_DP test = new TSP_DP(g);
+//        double result = test.solve();
+//        String route = test.getShortestRoute();
+//        assertEquals(result, 124.78312518185999, diff_delta);
+//        assertTrue(route.equals("[0, 7, 1, 3, 4, 2, 6, 5, 0]"));
+//
+//    }
 }
